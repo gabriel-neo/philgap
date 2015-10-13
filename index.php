@@ -34,10 +34,10 @@
 							if(isset($_POST['email']) && isset($_POST['password'])){
 								
 								//conexão local (gb home)
-								$con = mysqli_connect("localhost","root","","bd_philgap");
+								//$con = mysqli_connect("localhost","root","","bd_philgap");
 								
 								//conexão bd hostinger
-								//$con = mysqli_connect("mysql.hostinger.com.br","u438581021_cuser","bd@user1234","u438581021_bdpg");
+								$con = mysqli_connect("mysql.hostinger.com.br","u438581021_cuser","bd@user1234","u438581021_bdpg");
 								
 								$sql = "select id_user from tb_acc_usuarios where login = '".$_POST['email']."' and senha = '".$_POST['password']."'";
 								
