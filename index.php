@@ -22,11 +22,11 @@
 		<header id="cabecalho" class="bgimg">	
 			<nav id="menu_topo" class="menu_topo">
 				<div id="minilogo" class="topmenu">
-					<div id="imglogo" class="linkhome"><a href="index.php"><img src="./img/layout/logo.png" width="60px"/></a></div>
-					<div id="txtlogo" class="linkhome"><h1><a href="index.php">PhilGap</a></h1></div>
+					<div id="imglogo" class="linkhome"><a href="index"><img src="./img/layout/logo.png" width="60px"/></a></div>
+					<div id="txtlogo" class="linkhome"><h1><a href="index">PhilGap</a></h1></div>
 				</div>
-				<div id="sobre" class="topmenu"><strong><a href="./sobre.php">SOBRE</a></strong></div>
-				<div id="cadastro" class="topmenu"><strong><a href="./cadastro.php">CADASTRO</a></strong></div>
+				<div id="sobre" class="topmenu"><strong><a href="./sobre">SOBRE</a></strong></div>
+				<div id="cadastro" class="topmenu"><strong><a href="./cadastro">CADASTRO</a></strong></div>
 						<?php
 							session_start();
 							$_SESSION['page'] = "index";
@@ -57,15 +57,15 @@
 							}
 							if(isset($_SESSION['nome'])){
 								echo ("<div id='id_usuario' class='topmenu'><strong>
-								<a href='./pages/usuarios/".$_SESSION['id']."-".strtolower($_SESSION['nome']).".php'>".strtoupper($_SESSION['nome'])."</a>
-								</strong><br/><center><a href='./pages/logoff.php'>(sair)</a></center></div>");
+								<a href='./pages/usuarios/".$_SESSION['id']."-".strtolower($_SESSION['nome'])."'>".strtoupper($_SESSION['nome'])."</a>
+								</strong><br/><center><a href='./pages/logoff'>(sair)</a></center></div>");
 							}
 							else{
 								echo ("<nav id='login2' class='topmenu'><div id='loginContainer'>
 											<a href='#' id='loginButton'><span>LOGIN</span></a>
 											<div style='clear:both'></div>
 											<div id='loginBox'>                
-												<form id='loginForm' action='index.php' method='post' >
+												<form id='loginForm' action='index' method='post' >
 													<fieldset id='body'>
 														<fieldset>
 															<label for='email'>Endereço E-mail</label>
@@ -78,7 +78,7 @@
 														<input type='submit' id='login' value='Entrar' />
 														<label for='checkbox'><input type='checkbox' id='checkbox' />Lembrar-me</label>
 													</fieldset>
-													<span><a href='forgotpassword.php'>Esqueceu a senha?</a></span>
+													<span><a href='forgotpassword'>Esqueceu a senha?</a></span>
 												</form>
 											</div>
 										</div>
