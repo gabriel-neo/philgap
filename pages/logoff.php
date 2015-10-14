@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 	// Abre a sessão do usuário
 	session_start();
 	
@@ -25,10 +25,10 @@
 		$_SESSION['erro'] = "Logoff realizado com sucesso!";
 		
 		// Redireciona o usuário para a ultima pagina visitada
-		header("location:../".$page.".php");
+		header("location:../".$page."");
 	}
 	else{
 		// Redireciona o usuário para a ultima pagina visitada
-		header("location:../".$page.".php");	
+		header("location:../".$page."");	
 	}
 ?>
