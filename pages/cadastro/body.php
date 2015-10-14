@@ -1,4 +1,4 @@
-﻿<section class="body">
+<section class="body">
 		<section id="fonte" class="form">
 			<div>
 				<h1>Cadastro de Usuários PhilGap</h1>
@@ -33,7 +33,7 @@
 			
 			
 			<!--
-			<form action="./pages/realiza_cadastro.php" method="post">
+			<form action="./pages/realiza_cadastro" method="post">
 				<div id="index">
 					<label for="nome"><strong>Nome</strong></label>
 					<input type="text" id="nome" name="nome" style="width: 80px;" maxlength="30" placeholder="Ex : Gustavo" autofocus required />
