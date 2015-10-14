@@ -1,4 +1,4 @@
-﻿<section class="body">
+<section class="body">
 		<section class="index">
 			<div id="lefttop" class="left index">
 				<h2>Sobre Philgap</h2>
@@ -33,7 +33,7 @@
 					</p>
 				</div>
 				<div id="form_contato" class="index">
-					<form action="./pages/enviar_email.php" method="post">
+					<form action="./pages/enviar_email" method="post">
 						<table>
 							<tr>
 								<th>Nome</th>
