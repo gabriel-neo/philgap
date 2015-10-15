@@ -10,22 +10,23 @@
 		
 		<!--  Styles & Scripts  -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- Cadastro Css -->
-		<link href="./css/cadastro.css" rel="stylesheet" type="text/css"/>
+		<!-- FazerParte Css -->
+		<link href="./css/fazerparte.css" rel="stylesheet" type="text/css"/>
 		<!-- Bootstrap -->
 		<link href="./css/bootstrap.css" rel="stylesheet" media="screen"/>
 		<!-- Java Script & jQuery -->
-		<script src="./js/jquery.min.js"></script>
 		<script src="./js/login.js"></script>
+		<script src="./js/jquery.min.js"></script>	
+		<script src="./js/bootstrap.js"></script>
 
 	</head>
 	<body>
 		<?php
 			session_start();
-			$_SESSION['page'] = "cadastro";
+			$_SESSION['page'] = "fazerparte";
 			
 			include('./pages/head.php');
-			include('./pages/cadastro/body.php');
+			include('./pages/fazerparte/body.php');
 			include('./pages/footer.php');
 		?>
 	</body>
@@ -36,5 +37,5 @@
 		echo ("<SCRIPT LANGUAGE='JavaScript' TYPE='text/javascript'>
 			alert ('". $_SESSION['erro']. "')</SCRIPT>");
 		unset($_SESSION['erro']);
-	}
+	}	
 ?>

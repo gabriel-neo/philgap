@@ -8,11 +8,12 @@
 		<meta creation-date="10/10/2015"/>
 		<meta name="author" content="Gabriel de Moura Braga"/>
 		
+		<!--  Styles & Scripts  -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- Index Css -->
 		<link href="./css/index.css" rel="stylesheet" type="text/css"/>
 		<!-- Bootstrap -->
 		<link href="./css/bootstrap.css" rel="stylesheet" media="screen"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<!-- Java Script & jQuery -->
 		<script src="./js/jquery.min.js"></script>
 		<script src="./js/login.js"></script>

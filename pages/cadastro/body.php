@@ -10,43 +10,35 @@
 				<h2>Cadastrar Necessidade</h2>
 				<p>Vou utilizar o sistema para adquirir um produto ou obter um serviço</p>
 				<br/>
-				<div class="botoes"><button class="btn btn-large btn-success" type="button">Realizar Cadastro</button></div>
+				<div class="botoes">
+					<form action="./fazerparte.php" method="post">
+						<input type="hidden" name="cadastro" id="cadastro" value="comprar"/>
+						<input class="btn btn-large btn-success" type="submit" value="Realizar Cadastro">
+					</form>
+				</div>
 			</div>
 			<div id="index" class="center">
 				<h2>Atender Necessidade de Produtos</h2>
 				<p>Vou utilizar o sistema para ofertar produtos</p>
 				<br/>
 				<br/>
-				<div class="botoes"><button class="btn btn-large btn-info" type="button">Realizar Cadastro</button></div>
+				<div class="botoes">
+					<form action="./fazerparte.php" method="post">
+						<input type="hidden" name="cadastro" id="cadastro" value="venderprodutos"/>
+						<input class="btn btn-large btn-info" type="submit" value="Realizar Cadastro">
+					</form>
+				</div>
 			</div>
 			<div id="index" class="right">
 				<h2>Atender Necessidade de Serviços</h2>
 				<p>Vou utilizar o sistema para oferecer meus serviços</p>
 				<br/>
-				<div class="botoes"><button class="btn btn-large btn-info" type="button">Realizar Cadastro</button></div>
+				<div class="botoes">
+					<form action="./fazerparte.php" method="post">
+						<input type="hidden" name="cadastro" id="cadastro" value="prestarservicos"/>
+						<input class="btn btn-large btn-info" type="submit" value="Realizar Cadastro">
+					</form>
+				</div>
 			</div>
-			
-			
-			
-			
-			
-			
-			
-			<!--
-			<form action="./pages/realiza_cadastro.php" method="post">
-				<div id="index">
-					<label for="nome"><strong>Nome</strong></label>
-					<input type="text" id="nome" name="nome" style="width: 80px;" maxlength="30" placeholder="Ex : Gustavo" autofocus required />
-				</div>
-				<div id="index">
-					<label for="sobrenome"><strong>Sobrenome</strong></label>
-					<input type="text" id="sobrenome" name="sobrenome" style="width: 140px;" maxlength="50" placeholder="Ex : da Silva" required/>
-				</div>
-				<div>
-					<input type="submit" id="submit_cadastro" name="submit_cadastro" value="Finalizar Cadastro" class="btn btn-large btn-success" />
-					<input type="reset" id="clear_cadastro" name="clear_cadastro" value="Limpar Dados" class="btn btn-large btn-info" />
-				</div>
-			</form>
-			-->
 		</section>
 </section>
