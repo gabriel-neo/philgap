@@ -80,10 +80,11 @@ body {
 	margin:0 auto;
 }
 #opcao{
-	background:#606060;
+	/*background:#606060;*/
 }
 #background{
-	background:#909090;
+	/*background:#909090;*/
+	background:#C0C0C0;
 }
 .corfonte{
 	color:#000000;
@@ -92,7 +93,16 @@ body {
 .position{
 	text-align:left;
 }
-
+#fixed{
+	width:700px;
+	margin:0 auto;
+}
+.index2{
+	display: inline-block; /* mostra as divs dos botões alinhadas lado a lado */
+}
+.sexo{
+	width:265px;
+}
 
 /*------- Menu Login DropDown -------*/
 
