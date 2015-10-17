@@ -40,23 +40,20 @@
 								//conexão bd hostinger
 								//$con = mysqli_connect("mysql.hostinger.com.br","u438581021_cuser","bd@user1234","u438581021_bdpg");
 								
-								$sql = "select id_user from tb_acc_usuarios where email = '".$_POST['email']."' and senha = '".md5($_POST['password'])."'";
+								$sql = "select tbacc.id_user, tbinfo.nome from tb_acc_usuarios tbacc inner join tb_info_usuarios tbinfo on tbacc.id_user = tbinfo.id where tbacc.email = '".$_POST['email']."' and senha = '".md5($_POST['password'])."'";
 								
 								$rs = mysqli_query($con, $sql);
 								
 								if(mysqli_num_rows($rs)){
 									$usuario = mysqli_fetch_assoc($rs);
 									$_SESSION['id'] = $usuario['id_user'];
-									$sql = "select nome from tb_info_usuarios where id = '".$_SESSION['id']."'";
-									$rs = mysqli_query($con, $sql);
-									$usuario = mysqli_fetch_assoc($rs);
 									$_SESSION['nome'] = $usuario['nome'];
 								}
 								else{
 									$_SESSION['erro'] = "Login e/ou senha inválidos!";
 								}
 							}
-							if(isset($_SESSION['nome'])){
+							if((isset($_SESSION['nome'])) && (isset($_SESSION['id']))){
 								echo ("<div id='id_usuario' class='topmenu'><strong>
 								<a href='./pages/usuarios/".$_SESSION['id']."-".strtolower($_SESSION['nome']).".php'>".strtoupper($_SESSION['nome'])."</a>
 								</strong><br/><center><a href='./pages/logoff.php'>(sair)</a></center></div>");
@@ -92,8 +89,28 @@
 				<section id="index" class="index">
 					<div id="index" class="slogan_redirect">
 						<div id="italic"><center><h2>"Onde sonhar é mais barato"</h2></center></div>
-						<div class="botoes" id="btnalign"><button class="btn btn-large big_button btn-info" type="button">Atender Necessidade</button></div>
-						<div class="botoes"><button class="btn btn-large big_button btn-success" type="button">Cadastrar Necessidade</button></div>
+						<?php
+							if (isset($_SESSION['id']) && isset($_SESSION['nome'])){
+								echo ("<form action='./philgap.php' method='post' class='botoes' id='btnalign'>
+										<input type='hidden' name='phil' id='phil' value='philgap'/>
+										<input class='btn btn-large btn-info' type='submit' id='big_button' value='Atender Necessidade'/>
+									   </form>");
+								echo ("<form action='./addgap.php' method='post' class='botoes'>
+										<input type='hidden' name='add' id='add' value='addgap'/>
+										<input class='btn btn-large btn-success' type='submit' id='big_button' value='Cadastrar Necessidade'/>
+									   </form>");
+							}
+							else{
+								echo ("<form action='./pages/facalogin.php' method='post' class='botoes' id='btnalign'>
+										<input type='hidden' name='dologin' id='dologin' value='philgap'/>
+										<input class='btn btn-large btn-info' type='submit' id='big_button' value='Atender Necessidade'/>
+									   </form>");
+								echo ("<form action='./pages/facalogin.php' method='post' class='botoes'>
+										<input type='hidden' name='dologin' id='dologin' value='addgap'/>
+										<input class='btn btn-large btn-success' type='submit' id='big_button' value='Cadastrar Necessidade'/>
+									   </form>");
+							}
+						?>
 						<div id="fonte"><center><strong>Inicie sua experiência em nosso sistema, selecionando se deseja inserir ou atender a uma necessidade.</strong></center></div>
 					</div>					
 					<div id="index" class="appshow">
@@ -101,7 +118,6 @@
 						<h1 id="txtonapp">PhilGap</h1>
 					</div>
 				</section>
-				
 		</section>
 		<footer id="rodape" class="rodape">
 		

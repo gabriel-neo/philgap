@@ -5,12 +5,6 @@
 			<center><h3>Finalizar Cadastro</h3></center>
 			<div id="fixed">
 				<br/>
-				
-				<!-- PHP TESTE -->
-				<?php
-					var_dump($_SESSION['pessoa']);
-				?>
-				
 				<form action="./pages/cadastro/realiza_cadastro.php" method="post" class="position">
 					<!-- E-mail e Senha -->
 					<div>

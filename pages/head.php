@@ -7,11 +7,13 @@
 		<div id="sobre" class="topmenu"><strong><a href="./sobre.php">SOBRE</a></strong></div>
 		<div id="cadastro" class="topmenu"><strong><a href="./cadastro.php">CADASTRO</a></strong></div>
 		<?php
-			//não há necessidade desse teste, pois a variável de sessão
-			//sempre estará setada nesse ponto do código, mas "vai que" né?!
-			if(isset($_SESSION['page'])){
-				$page=$_SESSION['page'];
+			if (isset($_SESSION['page'])){
+				$page = $_SESSION['page'];
 			}
+			else{
+				$page = "index";
+			}
+			
 			if(isset($_POST['email']) && isset($_POST['password'])){
 				
 				//conexão local (gb home)
@@ -20,23 +22,20 @@
 				//conexão bd hostinger
 				//$con = mysqli_connect("mysql.hostinger.com.br","u438581021_cuser","bd@user1234","u438581021_bdpg");
 				
-				$sql = "select id_user from tb_acc_usuarios where email = '".$_POST['email']."' and senha = '".md5($_POST['password'])."'";
+				$sql = "select tbacc.id_user, tbinfo.nome from tb_acc_usuarios tbacc inner join tb_info_usuarios tbinfo on tbacc.id_user = tbinfo.id where tbacc.email = '".$_POST['email']."' and senha = '".md5($_POST['password'])."'";
 				
 				$rs = mysqli_query($con, $sql);
 				
 				if(mysqli_num_rows($rs)){
 					$usuario = mysqli_fetch_assoc($rs);
 					$_SESSION['id'] = $usuario['id_user'];
-					$sql = "select nome from tb_info_usuarios where id = '".$_SESSION['id']."'";
-					$rs = mysqli_query($con, $sql);
-					$usuario = mysqli_fetch_assoc($rs);
 					$_SESSION['nome'] = $usuario['nome'];
 				}
 				else{
 					$_SESSION['erro'] = "Login e/ou senha inválidos!";
 				}
 			}
-			if(isset($_SESSION['nome'])){
+			if((isset($_SESSION['nome'])) && (isset($_SESSION['id']))){
 				echo ("<div id='id_usuario' class='topmenu'><strong>
 				<a href='./pages/usuarios/".$_SESSION['id']."-".strtolower($_SESSION['nome']).".php'>".strtoupper($_SESSION['nome'])."</a>
 				</strong><br/><center><a href='./pages/logoff.php'>(sair)</a></center></div>");

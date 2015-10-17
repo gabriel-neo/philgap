@@ -58,8 +58,8 @@ body {
 #italic{
 	font-style: italic; /* estilo italico para a fonte */
 }
-.big_button {
-	width:240px; /*altura e largura dos botões da index*/
+#big_button{
+	width:240px;
 	height:70px;
 }
 #fonte {
@@ -69,7 +69,7 @@ body {
 .botoes{
     display: inline-block; /* mostra as divs dos botões alinhadas lado a lado */
 	margin-top:100px;
-	height:100px; /* define a altura da div em que estão os botoes */
+	height:80px; /* define a altura da div em que estão os botoes */
 }
 #btnalign{
 	width:260px; /* define o tamanho da div que o primeiro botão ocupa (alinhamento) */

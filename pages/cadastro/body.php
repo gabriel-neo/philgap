@@ -13,7 +13,7 @@
 				<div class="botoes">
 					<form action="./fazerparte.php" method="post">
 						<input type="hidden" name="cadastro" id="cadastro" value="comprar"/>
-						<input class="btn btn-large btn-success" type="submit" value="Realizar Cadastro">
+						<input class="btn btn-large btn-success" type="submit" value="Realizar Cadastro"/>
 					</form>
 				</div>
 			</div>
@@ -25,7 +25,7 @@
 				<div class="botoes">
 					<form action="./fazerparte.php" method="post">
 						<input type="hidden" name="cadastro" id="cadastro" value="venderprodutos"/>
-						<input class="btn btn-large btn-info" type="submit" value="Realizar Cadastro">
+						<input class="btn btn-large btn-info" type="submit" value="Realizar Cadastro"/>
 					</form>
 				</div>
 			</div>
@@ -36,7 +36,7 @@
 				<div class="botoes">
 					<form action="./fazerparte.php" method="post">
 						<input type="hidden" name="cadastro" id="cadastro" value="prestarservicos"/>
-						<input class="btn btn-large btn-info" type="submit" value="Realizar Cadastro">
+						<input class="btn btn-large btn-info" type="submit" value="Realizar Cadastro"/>
 					</form>
 				</div>
 			</div>
