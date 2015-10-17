@@ -61,6 +61,48 @@
 			$res = mysqli_fetch_assoc($rs);
 			$this->id_user = $res['id'];
 		}
+		
+		public function verificaemail($email){
+			$sql = "select id from tb_acc_usuarios where email = '".$email."'";
+			//conexão local (gb home)
+			$con = mysqli_connect("localhost","root","","bd_philgap");
+			//conexão bd hostinger
+			//private $con = mysqli_connect("mysql.hostinger.com.br","u438581021_cuser","bd@user1234","u438581021_bdpg");
+			$rs = mysqli_query($con, $sql);
+			//$res = mysqli_fetch_assoc($rs);
+			
+			return mysqli_num_rows($rs);
+		}
+		
+		public function isnull_info(){
+			if (($this->nome == null) && ($this->sobrenome == null) && ($this->sexo == null) &&
+				($this->datanasc == null) && ($this->cpf == null) && ($this->rg == null)){
+				return 1;
+			}
+			else{
+				return 0;
+			}
+		}
+		
+		public function isnull_endereco(){
+			if (($this->cep == null) && ($this->logradouro == null) && ($this->numero == null) &&
+			($this->complemento == null) && ($this->bairro == null) && ($this->cidade == null)  &&
+			($this->uf == null)){
+				return 1;
+			}
+			else{
+				return 0;
+			}
+		}
+		
+		public function isnull_login(){
+			if (($this->email == null) && ($this->senha == null)){
+				return 1;
+			}
+			else{
+				return 0;
+			}
+		}
 
 		public function insertinfopessoal(){
 			
@@ -87,6 +129,18 @@
 			}
 		}
 		
-		
+		public function insertinfologin(){
+			if ($this->insert){
+				
+				$this->verificaidcadastro();
+				
+				$sql = "insert into tb_acc_usuarios (id_user, email, senha) values ('".$this->id_user."', '".$this->email."', '".md5($this->senha)."')";
+				//conexão local (gb home)
+				$con = mysqli_connect("localhost","root","","bd_philgap");
+				//conexão bd hostinger
+				//private $con = mysqli_connect("mysql.hostinger.com.br","u438581021_cuser","bd@user1234","u438581021_bdpg");
+				$rs = mysqli_query($con, $sql);
+			}
+		}
 	}
 ?>

@@ -26,6 +26,9 @@
 					<div id="fixed">
 						<center><h3>Cadastro de Comprador</h3></center>
 						<br/>
+						<?php
+							unset($_SESSION['pessoa']);
+						?>
 						<form action="./pages/cadastro/realiza_cadastro.php" method="post" class="form-horizontal">
 							<!-- Nome e Sobrenome -->
 							<div id="index">

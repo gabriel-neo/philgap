@@ -33,7 +33,7 @@
 					</p>
 				</div>
 				<div id="form_contato" class="index">
-					<form action="./pages/enviar_email.php" method="post">
+					<form action="#" method="post">
 						<table>
 							<tr>
 								<th>Nome</th>

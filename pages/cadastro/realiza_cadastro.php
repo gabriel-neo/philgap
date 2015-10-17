@@ -1,34 +1,68 @@
 ﻿<?php
 	include "../../classes/Cliente.php";
-	$pessoa = new Cliente();
 	
-	if(
-		isset($_POST['nome']) && isset($_POST['sobrenome']) && isset($_POST['sexo']) &&
-		isset($_POST['dia']) &&	isset($_POST['mes']) && isset($_POST['ano']) &&
-		isset($_POST['cpf']) && isset($_POST['rg']) && isset($_POST['cep']) &&
-		isset($_POST['logradouro']) && isset($_POST['numero']) && isset($_POST['bairro']) &&
-		isset($_POST['cidade']) && isset($_POST['uf'])
-	){
+	session_start();
+	
+	if (!isset($_SESSION['pessoa'])){
 		
-		$datanasc = $_POST['ano']."-".$_POST['mes']."-".$_POST['dia'];
-		$pessoa->addinfopessoal($_POST['nome'], $_POST['sobrenome'], $_POST['sexo'], $datanasc, $_POST['cpf'], $_POST['rg']);
-		if (isset($_POST['complemento'])){
-			$pessoa->addenderecopessoal($_POST['cep'], $_POST['logradouro'], $_POST['numero'], $_POST['complemento'], $_POST['bairro'], $_POST['cidade'], $_POST['uf']);
+		$_SESSION['pessoa'] = new Cliente();
+		
+		if(
+			!empty($_POST['nome']) && !empty($_POST['sobrenome']) && !empty($_POST['sexo']) &&
+			!empty($_POST['dia']) && !empty($_POST['mes']) && !empty($_POST['ano']) &&
+			!empty($_POST['cpf']) && !empty($_POST['rg']) && !empty($_POST['cep']) &&
+			!empty($_POST['logradouro']) && !empty($_POST['numero']) && !empty($_POST['bairro']) &&
+			!empty($_POST['cidade']) && !empty($_POST['uf'])
+		){
+			$datanasc = $_POST['ano']."-".$_POST['mes']."-".$_POST['dia'];
+			$_SESSION['pessoa']->addinfopessoal($_POST['nome'], $_POST['sobrenome'], $_POST['sexo'], $datanasc, $_POST['cpf'], $_POST['rg']);
+			if (empty($_POST['complemento'])){
+				$_SESSION['pessoa']->addenderecopessoal($_POST['cep'], $_POST['logradouro'], $_POST['numero'], 0, $_POST['bairro'], $_POST['cidade'], $_POST['uf']);
+			}
+			else{
+				$_SESSION['pessoa']->addenderecopessoal($_POST['cep'], $_POST['logradouro'], $_POST['numero'], $_POST['complemento'], $_POST['bairro'], $_POST['cidade'], $_POST['uf']);
+			}
+			$_SESSION['podelogin'] = 1;
+			header("location:../../finalizacadastro.php");
 		}
 		else{
-			$pessoa->addenderecopessoal($_POST['cep'], $_POST['logradouro'], $_POST['numero'], 0, $_POST['bairro'], $_POST['cidade'], $_POST['uf']);
+			session_destroy();
+			$_SESSION['erro'] = "Ocorreu algum erro em seu cadastro. Por favor verifique!";
+			header("location:../../fazerparte.php");
 		}
-		
-		//INSERTS NO BANCO DE DADOS
-		//ainda não implementado
-		//$pessoa->addinfologin($email, $senha);
-		//$pessoa->insertinfopessoal();
-		//$pessoa->insertenderecopessoal();
-		
 	}
 	else{
-		session_start();
-		$_SESSION['erro'] = "Ocorreu algum erro em seu cadastro. Por favor verifique!";
-		header("location:../../fazerparte.php");
+		if ($_SESSION['pessoa']->isnull_info() || $_SESSION['pessoa']->isnull_endereco()){
+			unset($_SESSION['pessoa']);
+			header("location:./realiza_cadastro.php");
+		}
+		else{
+			if (!empty($_POST['email']) && !empty($_POST['senha']) && !empty($_POST['senhaconfirmar'])){
+				if ($_POST['senha'] == $_POST['senhaconfirmar']){
+					if($_SESSION['pessoa']->verificaemail($_POST['email'])){
+						$_SESSION['erro'] = "Este endereço e-mail já está cadastrado em nosso sistema. Por favor tente outro!";
+						header("location:../../finalizacadastro.php");
+					}
+					else{
+						$_SESSION['pessoa']->addinfologin($_POST['email'], $_POST['senha']);
+						
+						$_SESSION['pessoa']->insertinfopessoal();
+						$_SESSION['pessoa']->insertenderecopessoal();
+						$_SESSION['pessoa']->insertinfologin();
+						session_destroy();
+						session_start();
+						$_SESSION['erro'] = "Usuário cadastrado com Sucesso!";
+						header("location:../../index.php");
+					}
+				}
+				else{
+					$_SESSION['erro'] = "As senhas não coincidem! Favor verificar.";
+					header("location:../../finalizacadastro.php");
+				}
+			}
+			else{
+				header("location:../../finalizacadastro.php");
+			}
+		}
 	}
 ?>

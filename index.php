@@ -40,7 +40,7 @@
 								//conexão bd hostinger
 								//$con = mysqli_connect("mysql.hostinger.com.br","u438581021_cuser","bd@user1234","u438581021_bdpg");
 								
-								$sql = "select id_user from tb_acc_usuarios where login = '".$_POST['email']."' and senha = '".$_POST['password']."'";
+								$sql = "select id_user from tb_acc_usuarios where email = '".$_POST['email']."' and senha = '".md5($_POST['password'])."'";
 								
 								$rs = mysqli_query($con, $sql);
 								
