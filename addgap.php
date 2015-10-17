@@ -10,14 +10,17 @@
 		
 		<!--  Styles & Scripts  -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- Cadastro Css -->
-		<link href="./css/cadastro.css" rel="stylesheet" type="text/css"/>
+		<!-- AddGap Css -->
+		<link href="./css/addgap.css" rel="stylesheet" type="text/css"/>
+		<!-- Login Css -->
+		<link href="./css/login.css" rel="stylesheet" type="text/css"/>
 		<!-- Bootstrap -->
 		<link href="./css/bootstrap.css" rel="stylesheet" media="screen"/>
 		<!-- Java Script & jQuery -->
 		<script src="./js/jquery.min.js"></script>
 		<script src="./js/login.js"></script>
-
+		<script src="./js/bootstrap.js"></script>
+		
 	</head>
 	<body>
 		<?php

@@ -10,8 +10,10 @@
 		
 		<!--  Styles & Scripts  -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- Cadastro Css -->
+		<!-- Finaliza Cadastro Css -->
 		<link href="./css/fazerparte.css" rel="stylesheet" type="text/css"/>
+		<!-- Login Css -->
+		<link href="./css/login.css" rel="stylesheet" type="text/css"/>
 		<!-- Bootstrap -->
 		<link href="./css/bootstrap.css" rel="stylesheet" media="screen"/>
 		<!-- Java Script & jQuery -->

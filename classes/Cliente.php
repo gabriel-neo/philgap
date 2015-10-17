@@ -1,8 +1,10 @@
 ﻿<?php
 	class Cliente {
 		
+		//variavel de controle de inserção
 		private $insert = 0;
 		
+		//id do usuário
 		private $id_user;
 		
 		//info pessoal
@@ -26,7 +28,6 @@
 		private $email;
 		private $senha;
 		
-		
 		public function addinfopessoal($nome, $sobrenome, $sexo, $datanasc, $cpf, $rg){
 			
 			$this->nome = $nome;
@@ -36,6 +37,7 @@
 			$this->cpf = $cpf;
 			$this->rg = $rg;
 		}
+		
 		public function addenderecopessoal($cep, $logradouro, $numero, $complemento, $bairro, $cidade, $uf){
 			$this->cep = $cep;
 			$this->logradouro = $logradouro;

@@ -26,7 +26,10 @@
 			header("location:../../finalizacadastro.php");
 		}
 		else{
-			session_destroy();
+			//Alteração Teste de \/ para unset($_SESSION['pessoa']);
+			//session_destroy();
+			
+			unset($_SESSION['pessoa']);
 			$_SESSION['erro'] = "Ocorreu algum erro em seu cadastro. Por favor verifique!";
 			header("location:../../fazerparte.php");
 		}
@@ -49,8 +52,7 @@
 						$_SESSION['pessoa']->insertinfopessoal();
 						$_SESSION['pessoa']->insertenderecopessoal();
 						$_SESSION['pessoa']->insertinfologin();
-						session_destroy();
-						session_start();
+						unset($_SESSION['pessoa']);
 						$_SESSION['erro'] = "Usuário cadastrado com Sucesso!";
 						header("location:../../index.php");
 					}
