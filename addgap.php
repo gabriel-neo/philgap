@@ -25,6 +25,15 @@
 	<body>
 		<?php
 			session_start();
+			
+			if (!isset($_SESSION['id']) && !isset($_SESSION['nome'])){
+				if (isset($_SESSION['page'])){
+					header("location:".$_SESSION['page'].".php");
+				}
+				else{
+					header("location:index.php");
+				}
+			}
 			$_SESSION['page'] = "addgap";
 			
 			include('./pages/head.php');

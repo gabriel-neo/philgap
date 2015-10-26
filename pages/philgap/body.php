@@ -39,8 +39,8 @@
 							<label for="status">Status</label>
 							<select name="status" id="status" style="width:150px;">
 								<option value="all">Todos</option>
-								<option value="aberta">Aberto</option>
-								<option value="emandamento">Em andamento</option>
+								<option value="0">Aberto</option>
+								<option value="1">Em andamento</option>
 							</select>
 						</td>
 						<td>
@@ -68,11 +68,19 @@
 				include "./classes/PhilGap.php";
 				
 				$_SESSION['philgap'] = new PhilGap();
+				$lastprod = $_SESSION['philgap']->showgapprod();
+				$lastserv = $_SESSION['philgap']->showgapserv();
 				
-				$lastprod = $_SESSION['philgap']->last10regprod();
-				$lastserv = $_SESSION['philgap']->last10regserv();
+				if(isset($_POST['categoria']) && $_POST['categoria']==1){
+					$lastprod = $_SESSION['philgap']->filtraprod($_POST['uf'], $_POST['status'], $_POST['urgencia'], $_POST['filtro']);
+					$lastserv = null;
+				}
+				else if(isset($_POST['categoria']) && $_POST['categoria']==2){
+					$lastprod = null;
+				}
+				
 			?>
-			<table class="table table-hover" style="width:600px;">
+			<table class="table table-hover" style="width:1000px;">
 				<tr>
 					<th>Categoria</th>
 					<th>Estado</th>
@@ -81,33 +89,76 @@
 					<th>Gap</th>
 					<th>Descrição</th>
 					<th>Cliente</th>
+					<th><center>Inserir Oferta</center></th>
 				</tr>
 				<?php
-				
+					
 					$urgencia = array(0=>"Muito Urgente",1=>"Urgente",2=>"Pouco Urgente", 3=>"Não Urgente",9=>"Não Definido");
 					$status = array(0=>"Aberto", 1=>"Em Andamento");
+					$colorcolumns = array(0=>"error",1=>"warning",2=>"warning",3=>"info",4=>"info");
 					
-					while($gapprod = mysqli_fetch_array($lastprod)){
-						echo ("<tr>
-									<td>Produto</td>
-									<td>".strtoupper($gapprod['uf'])."</td>
-									<td>".$status[$gapprod['status']]."</td>
-									<td>".$urgencia[$gapprod['urgencia']]."</td>
-									<td>".$gapprod['gap']."</td>
-									<td>".$gapprod['desc']."</td>
-									<td>".$gapprod['nome']."</td>
-							   </tr>");
+					if(!is_null($lastprod)){
+						while($gapprod = mysqli_fetch_array($lastprod)){
+							if($gapprod['urgencia']==0){
+								echo ("<tr class='".$colorcolumns[0]."'>");
+								/*teste para linha da tabela ser clicavel
+								?>
+									<tr class="error" onclick="location.href = 'index.php';" style="cursor: hand;">
+								<?php
+								*/
+							}
+							else if ($gapprod['urgencia']==1){
+								echo ("<tr class='".$colorcolumns[1]."'>");
+							}
+							else if ($gapprod['urgencia']==2){
+								echo ("<tr class='".$colorcolumns[2]."'>");
+							}
+							else if ($gapprod['urgencia']==3){
+								echo ("<tr class='".$colorcolumns[3]."'>");
+							}
+							else if ($gapprod['urgencia']==9){
+								echo ("<tr class='".$colorcolumns[4]."'>");
+							}
+							echo ("
+										<td>Produto</td>
+										<td>".strtoupper($gapprod['uf'])."</td>
+										<td>".$status[$gapprod['status']]."</td>
+										<td>".$urgencia[$gapprod['urgencia']]."</td>
+										<td>".$gapprod['gap']."</td>
+										<td>".$gapprod['desc']."</td>
+										<td>".$gapprod['nome']."</td>
+										<td><a style='color:#000000;' href='philgapprod.php?idgap=".$gapprod['id']."'><center><strong>Phil Gap</strong></center></a></td>
+								   </tr>");
+						}
 					}
-					while($gapserv = mysqli_fetch_array($lastserv)){
-						echo ("<tr>
-									<td>Serviço</td>
-									<td>".strtoupper($gapserv['uf'])."</td>
-									<td>".$status[$gapserv['status']]."</td>
-									<td>".$urgencia[$gapserv['urgencia']]."</td>
-									<td>".$gapserv['gap']."</td>
-									<td>".$gapserv['desc']."</td>
-									<td>".$gapserv['nome']."</td>
-							   </tr>");
+					if(!is_null($lastserv)){
+						while($gapserv = mysqli_fetch_array($lastserv)){
+							if($gapserv['urgencia']==0){
+								echo ("<tr class='".$colorcolumns[0]."'");
+							}
+							else if ($gapserv['urgencia']==1){
+								echo ("<tr class='".$colorcolumns[1]."'>");
+							}
+							else if ($gapserv['urgencia']==2){
+								echo ("<tr class='".$colorcolumns[2]."'>");
+							}
+							else if ($gapserv['urgencia']==3){
+								echo ("<tr class='".$colorcolumns[3]."'>");
+							}
+							else if ($gapserv['urgencia']==9){
+								echo ("<tr class='".$colorcolumns[4]."'>");
+							}
+							echo ("
+										<td>Serviço</td>
+										<td>".strtoupper($gapserv['uf'])."</td>
+										<td>".$status[$gapserv['status']]."</td>
+										<td>".$urgencia[$gapserv['urgencia']]."</td>
+										<td>".$gapserv['gap']."</td>
+										<td>".$gapserv['desc']."</td>
+										<td>".$gapserv['nome']."</td>
+										<td><a style='color:#000000;' href='philgapserv.php?idgap=".$gapserv['id']."'><center><strong>Phil Gap</strong></center></a></td>
+								   </tr>");
+						}
 					}
 				?>
 			</table>
