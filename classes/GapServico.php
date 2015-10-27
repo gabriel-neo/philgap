@@ -1,5 +1,6 @@
 ﻿<?php
-	class GapServico{
+	require_once "ConexaoBD.php";
+	class GapServico extends ConexaoBD{
 		
 		//id do usuário
 		private $id_user;
@@ -61,12 +62,10 @@
 		
 		public function insertgapservico(){
 			if ($this->verificainsert()){
+				$con = ConexaoBD::con();
 				
 				$sql = "insert into tb_gap_servico (id_user, status, urgencia, especialidade, foco, descricao, cep, logradouro, numero, complemento, bairro, cidade, uf) values ('".$this->id_user."', 0, '".$this->urgencia."', '".$this->especialidade."', '".$this->foco."', '".$this->descricao."', '".$this->cep."', '".$this->logradouro."', '".$this->numero."', '".$this->complemento."', '".$this->bairro."', '".$this->cidade."', '".$this->uf."')";
-				//conexão local (gb home)
-				$con = mysqli_connect("localhost","root","","bd_philgap");
-				//conexão bd hostinger
-				//private $con = mysqli_connect("mysql.hostinger.com.br","u438581021_cuser","bd@user1234","u438581021_bdpg");
+				
 				$rs = mysqli_query($con, $sql);
 			}
 		}

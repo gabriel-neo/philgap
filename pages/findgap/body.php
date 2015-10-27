@@ -3,7 +3,7 @@
 		<h1>Atender Necessidade</h1>
 		<h3>Submeter oferta para :</h3>
 		<div class="txtalignleft">
-			<form action="./philgap.php" class="seleciona_produtos" method="post">
+			<form action="./findgap.php" class="seleciona_produtos" method="post">
 				<legend> Use os campos abaixo para filtrar</legend>
 				<table>
 					<tr>
@@ -59,26 +59,31 @@
 							<input type="text" id="filtro" name="filtro" style="width:230px;" maxlength="20" placeholder="Ex : Celular, Bombeiro, Notebook..."/>
 						</td>
 						<td>
-							<input type="submit" id="filtrar" name="filtrar" value="Filtrar" style="margin-top:17px;" />
+							<input type="submit" id="filtrar" name="filtrar" value="Find Gap" style="margin-top:17px;" />
 						</td>
 					</tr>
 				</table>
 			</form>
 			<?php
-				include "./classes/PhilGap.php";
+				include "./classes/FindGap.php";
 				
-				$_SESSION['philgap'] = new PhilGap();
-				$lastprod = $_SESSION['philgap']->showgapprod();
-				$lastserv = $_SESSION['philgap']->showgapserv();
-				
-				if(isset($_POST['categoria']) && $_POST['categoria']==1){
-					$lastprod = $_SESSION['philgap']->filtraprod($_POST['uf'], $_POST['status'], $_POST['urgencia'], $_POST['filtro']);
+				$_SESSION['findgap'] = new FindGap();
+				if (!isset($_POST['categoria'])){
+					$lastprod = $_SESSION['findgap']->showgapprod();
+					$lastserv = $_SESSION['findgap']->showgapserv();
+				}
+				else if (isset($_POST['categoria']) && $_POST['categoria']==0){
+					$lastprod = $_SESSION['findgap']->filtraprod($_POST['uf'], $_POST['status'], $_POST['urgencia'], $_POST['filtro']);
+					$lastserv = $_SESSION['findgap']->filtraserv($_POST['uf'], $_POST['status'], $_POST['urgencia'], $_POST['filtro']);
+				}
+				else if(isset($_POST['categoria']) && $_POST['categoria']==1){
+					$lastprod = $_SESSION['findgap']->filtraprod($_POST['uf'], $_POST['status'], $_POST['urgencia'], $_POST['filtro']);
 					$lastserv = null;
 				}
 				else if(isset($_POST['categoria']) && $_POST['categoria']==2){
+					$lastserv = $_SESSION['findgap']->filtraserv($_POST['uf'], $_POST['status'], $_POST['urgencia'], $_POST['filtro']);
 					$lastprod = null;
 				}
-				
 			?>
 			<table class="table table-hover" style="width:1000px;">
 				<tr>
@@ -127,7 +132,7 @@
 										<td>".$gapprod['gap']."</td>
 										<td>".$gapprod['desc']."</td>
 										<td>".$gapprod['nome']."</td>
-										<td><a style='color:#000000;' href='philgapprod.php?idgap=".$gapprod['id']."'><center><strong>Phil Gap</strong></center></a></td>
+										<td><a style='color:#000000;' href='./philgapprod.php?idgap=".$gapprod['id']."'><center><strong>Phil Gap</strong></center></a></td>
 								   </tr>");
 						}
 					}
@@ -156,7 +161,7 @@
 										<td>".$gapserv['gap']."</td>
 										<td>".$gapserv['desc']."</td>
 										<td>".$gapserv['nome']."</td>
-										<td><a style='color:#000000;' href='philgapserv.php?idgap=".$gapserv['id']."'><center><strong>Phil Gap</strong></center></a></td>
+										<td><a style='color:#000000;' href='./philgapserv.php?idgap=".$gapserv['id']."'><center><strong>Phil Gap</strong></center></a></td>
 								   </tr>");
 						}
 					}

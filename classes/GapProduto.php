@@ -1,5 +1,6 @@
 ﻿<?php
-	class GapProduto{
+	require_once "ConexaoBD.php";
+	class GapProduto extends ConexaoBD{
 		
 		//id do usuário
 		private $id_user;
@@ -65,12 +66,9 @@
 		
 		public function insertgapproduto(){
 			if ($this->verificainsert()){
-				
 				$sql = "insert into tb_gap_produto (id_user, status, urgencia, produto, especificacao, marca, cor, precomedio, cep, logradouro, numero, complemento, bairro, cidade, uf) values ('".$this->id_user."', 0, '".$this->urgencia."', '".$this->produto."', '".$this->especificacao."', '".$this->marca."', '".$this->cor."', '".$this->precomedio."', '".$this->cep."', '".$this->logradouro."', '".$this->numero."', '".$this->complemento."', '".$this->bairro."', '".$this->cidade."', '".$this->uf."')";
-				//conexão local (gb home)
-				$con = mysqli_connect("localhost","root","","bd_philgap");
-				//conexão bd hostinger
-				//private $con = mysqli_connect("mysql.hostinger.com.br","u438581021_cuser","bd@user1234","u438581021_bdpg");
+				$con = ConexaoBD::con();
+				
 				$rs = mysqli_query($con, $sql);
 			}
 		}

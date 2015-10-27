@@ -93,7 +93,7 @@
 						<div id="italic"><center><h2>"Onde sonhar é mais barato"</h2></center></div>
 						<?php
 							if (isset($_SESSION['id']) && isset($_SESSION['nome'])){
-								echo ("<form action='./philgap.php' method='post' class='botoes' id='btnalign'>
+								echo ("<form action='./findgap.php' method='post' class='botoes' id='btnalign'>
 										<input type='hidden' name='phil' id='phil' value='philgap'/>
 										<input class='btn btn-large btn-info' type='submit' id='big_button' value='Atender Necessidade'/>
 									   </form>");

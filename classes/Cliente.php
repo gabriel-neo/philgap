@@ -1,5 +1,6 @@
 ﻿<?php
-	class Cliente {
+	require_once "ConexaoBD.php";
+	class Cliente extends ConexaoBD{
 		
 		//variavel de controle de inserção
 		private $insert = 0;
@@ -54,24 +55,20 @@
 		}
 		
 		public function verificaidcadastro(){
+			$con = ConexaoBD::con();
+			
 			$sql = "select id from tb_info_usuarios where cpf = '".$this->cpf."'";
-			//conexão local (gb home)
-			$con = mysqli_connect("localhost","root","","bd_philgap");
-			//conexão bd hostinger
-			//private $con = mysqli_connect("mysql.hostinger.com.br","u438581021_cuser","bd@user1234","u438581021_bdpg");
 			$rs = mysqli_query($con, $sql);
 			$res = mysqli_fetch_assoc($rs);
+			
 			$this->id_user = $res['id'];
 		}
 		
 		public function verificaemail($email){
+			$con = ConexaoBD::con();
+			
 			$sql = "select id from tb_acc_usuarios where email = '".$email."'";
-			//conexão local (gb home)
-			$con = mysqli_connect("localhost","root","","bd_philgap");
-			//conexão bd hostinger
-			//private $con = mysqli_connect("mysql.hostinger.com.br","u438581021_cuser","bd@user1234","u438581021_bdpg");
 			$rs = mysqli_query($con, $sql);
-			//$res = mysqli_fetch_assoc($rs);
 			
 			return mysqli_num_rows($rs);
 		}
@@ -107,40 +104,34 @@
 		}
 
 		public function insertinfopessoal(){
+			$con = ConexaoBD::con();
 			
 			$sql = "insert into tb_info_usuarios (nome, sobrenome, sexo, datanasc, cpf, rg) values ('".$this->nome."', '".$this->sobrenome."', '".$this->sexo."', '".$this->datanasc."', '".$this->cpf."', '".$this->rg."')";
-			//conexão local (gb home)
-			$con = mysqli_connect("localhost","root","","bd_philgap");
-			//conexão bd hostinger
-			//private $con = mysqli_connect("mysql.hostinger.com.br","u438581021_cuser","bd@user1234","u438581021_bdpg");
 			$rs = mysqli_query($con, $sql);
+			
 			$this->insert = 1;
 		}
 		
 		public function insertenderecopessoal(){
 			if ($this->insert){
-				
 				$this->verificaidcadastro();
-			
+				
+				$con = ConexaoBD::con();
+				
 				$sql = "insert into tb_enderecos_usuarios (id_user, cep, logradouro, numero, complemento, bairro, cidade, uf) values ('".$this->id_user."', '".$this->cep."', '".$this->logradouro."', '".$this->numero."', '".$this->complemento."', '".$this->bairro."', '".$this->cidade."', '".$this->uf."')";
-				//conexão local (gb home)
-				$con = mysqli_connect("localhost","root","","bd_philgap");
-				//conexão bd hostinger
-				//private $con = mysqli_connect("mysql.hostinger.com.br","u438581021_cuser","bd@user1234","u438581021_bdpg");
+				
 				$rs = mysqli_query($con, $sql);
 			}
 		}
 		
 		public function insertinfologin(){
 			if ($this->insert){
-				
 				$this->verificaidcadastro();
 				
+				$con = ConexaoBD::con();
+				
 				$sql = "insert into tb_acc_usuarios (id_user, email, senha) values ('".$this->id_user."', '".$this->email."', '".md5($this->senha)."')";
-				//conexão local (gb home)
-				$con = mysqli_connect("localhost","root","","bd_philgap");
-				//conexão bd hostinger
-				//private $con = mysqli_connect("mysql.hostinger.com.br","u438581021_cuser","bd@user1234","u438581021_bdpg");
+				
 				$rs = mysqli_query($con, $sql);
 			}
 		}

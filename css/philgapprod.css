@@ -1,0 +1,68 @@
+﻿/*------- Css Default -------*/
+
+body {
+	/* usar apenas para definir uma cor de fundo ==>> background:#ccc; */
+	
+	background-image: url("../img/layout/background_tiny.jpg"); /* insere uma imagem de background na div */
+	background-repeat: no-repeat; /* define a imagem para não repetir */
+	background-position: top; /* posição da imagem na div */
+}
+.bgimg{
+	background-image: url("../img/layout/preto.jpg"); /* insere uma imagem de background na div */
+	height: 80px; /* define a altura da div */
+	width:100%; /* define a largura da div : 100% da tela, ou seja tamanho fixo */
+}
+.menu_topo{
+	background-image: url("../img/layout/preto.jpg"); /* insere uma imagem de background na div */
+	height: 80px; /* define a altura da div */
+	width: 1000px; /* define a largura da div */
+	margin: 0 auto; /* faz com que a barra preta do menu superior fique centralizada dentro da div */
+	margin-top:-20px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* define qual fonte será usada */
+	font-size: 14px; /* tamanho da fonte do menu superior direito */
+}
+.topmenu {
+	margin-top:11px; /* distancia até o topo da página (alinhamento) */
+	display: inline-block; /* posiciona as divs do menu do topo lado a lado */
+	vertical-align: middle; /* alinhamento vertical no meio */
+}
+.linkhome {
+	vertical-align: middle; /* alinhamento vertical no meio */
+   	display: inline-block; /* posiciona as divs do link para a home lado a lado */
+}
+#minilogo{
+	width:600px; /* define o tamanho da div referente a minilogo + link para home */
+}
+#cadastro{
+	width:120px; /* define o tamanho da div do menu contato */
+}
+#sobre{
+	width:120px; /* define o tamanho da div do menu sobre */
+}
+.body {
+	text-align:center; /* hack para o IE */
+	width: 1000px; /* define a largura da página (centralizada com 1000px) */
+	margin:0 auto; /* posiciona o conteudo da section body ao centro dela */
+	text-align:left; /* "remédio" para o hack do IE */
+}
+.index{
+	color:#ffffff; /* define a cor do texto dentro da index */
+}
+#index{
+	display: inline-block; /* mostra as divs dos botões alinhadas lado a lado */
+}
+#fonte {
+	font-size: 16px; /* tamanho da fonte da mensagem de chamada dos botões */
+	line-height: 26px; /* espaçamento vertical entre as linhas dessa div */
+}
+.form{
+	text-align:center; /* hack para o IE */
+	margin: 0 auto;
+}
+#text{
+	margin-top:70px;
+	font-size:18px;
+}
+.txtalignleft{
+	text-align:left;
+}
