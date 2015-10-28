@@ -4,7 +4,7 @@
 		<h3>Submeter oferta para :</h3>
 		<div class="txtalignleft">
 			<form action="./findgap.php" class="seleciona_produtos" method="post">
-				<legend> Use os campos abaixo para filtrar</legend>
+				<legend>Use os campos abaixo para filtrar</legend>
 				<table>
 					<tr>
 						<td>
@@ -68,6 +68,7 @@
 				include "./classes/FindGap.php";
 				
 				$_SESSION['findgap'] = new FindGap();
+				
 				if (!isset($_POST['categoria'])){
 					$lastprod = $_SESSION['findgap']->showgapprod();
 					$lastserv = $_SESSION['findgap']->showgapserv();
@@ -84,8 +85,10 @@
 					$lastserv = $_SESSION['findgap']->filtraserv($_POST['uf'], $_POST['status'], $_POST['urgencia'], $_POST['filtro']);
 					$lastprod = null;
 				}
+				
+				unset($_SESSION['findgap']);
 			?>
-			<table class="table table-hover" style="width:1000px;">
+			<table class="table table-hover">
 				<tr>
 					<th>Categoria</th>
 					<th>Estado</th>

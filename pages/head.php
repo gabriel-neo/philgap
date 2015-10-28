@@ -7,6 +7,8 @@
 		<div id="sobre" class="topmenu"><strong><a href="./sobre.php">SOBRE</a></strong></div>
 		<div id="cadastro" class="topmenu"><strong><a href="./cadastro.php">CADASTRO</a></strong></div>
 		<?php
+			include "./classes/ConexaoBD.php";
+			
 			if (isset($_SESSION['page'])){
 				$page = $_SESSION['page'];
 			}
@@ -15,12 +17,8 @@
 			}
 			
 			if(isset($_POST['email']) && isset($_POST['password'])){
-				
-				//conexão local (gb home)
-				$con = mysqli_connect("localhost","root","","bd_philgap");
-				
-				//conexão bd hostinger
-				//$con = mysqli_connect("mysql.hostinger.com.br","u438581021_cuser","bd@user1234","u438581021_bdpg");
+
+				$con = ConexaoBD::con();
 				
 				$sql = "select tbacc.id_user, tbinfo.nome from tb_acc_usuarios tbacc inner join tb_info_usuarios tbinfo on tbacc.id_user = tbinfo.id where tbacc.email = '".$_POST['email']."' and senha = '".md5($_POST['password'])."'";
 				
