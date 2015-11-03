@@ -48,4 +48,10 @@
 			alert ('". $_SESSION['erro']. "')</SCRIPT>");
 		unset($_SESSION['erro']);
 	}
+	// Verifica se existe mensagem de erro
+	if(isset($_SESSION['erro2'])){
+		echo ("<SCRIPT LANGUAGE='JavaScript' TYPE='text/javascript'>
+			alert ('". $_SESSION['erro2']. "')</SCRIPT>");
+		unset($_SESSION['erro2']);
+	}
 ?>

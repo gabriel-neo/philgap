@@ -3,63 +3,71 @@
 		<h1>Atender Necessidade</h1>
 		<h3>Submeter oferta para :</h3>
 		<div class="txtalignleft">
-			<form action="./findgap.php" class="seleciona_produtos" method="post">
+			<?php
+				unset($_SESSION['busca']);
+			?>
+			<form action="./findgap.php" class="seleciona_produtos" method="get">
 				<legend>Use os campos abaixo para filtrar</legend>
 				<table>
 					<tr>
 						<td>
 							<label for="categoria">Categoria</label>
 							<select name="categoria" id="categoria" style="width:100px;">
-								<option selected name="todos" value="0" >Todas</option>
-								<option id="produtos" name="produtos" value="1" >Produtos</option>
-								<option id="servicos" name="servicos" value="2" >Serviços</option>
+								<option <?php if(isset($_GET['categoria'])){if($_GET['categoria']==0){echo("selected");}} ?> name="todos" value="0" >Todas</option>
+								<option <?php if(isset($_GET['categoria'])){if($_GET['categoria']==1){echo("selected");}} ?> id="produtos" name="produtos" value="1" >Produtos</option>
+								<option <?php if(isset($_GET['categoria'])){if($_GET['categoria']==2){echo("selected");}} ?> id="servicos" name="servicos" value="2" >Serviços</option>
 							</select>
 						</td>
 						<td>
 							<label for="uf">Estado</label>
 							<select name="uf" id="uf" style="width:80px;">
 								<option value="all">Todos</option>
-								<option value="ac">AC</option><option value="al">AL</option>
-								<option value="ap">AP</option><option value="am">AM</option>
-								<option value="ba">BA</option><option value="ce">CE</option>
-								<option value="df">DF</option><option value="es">ES</option>
-								<option value="go">GO</option><option value="ma">MA</option>
-								<option value="mt">MT</option><option value="ms">MS</option>
-								<option value="mg">MG</option><option value="pa">PA</option>
-								<option value="pb">PB</option><option value="pr">PR</option>
-								<option value="pe">PE</option><option value="pi">PI</option>
-								<option value="rj">RJ</option><option value="rn">RN</option>
-								<option value="rs">RS</option><option value="ro">RO</option>
-								<option value="rr">RR</option><option value="sc">SC</option>
-								<option value="sp">SP</option><option value="se">SE</option>
-								<option value="to">TO</option>
+								<?php
+									$estado=array(0=>"ac", 1=>"al", 2=>"ap", 3=>"am", 4=>"ba", 5=>"ce", 6=>"df", 7=>"es", 8=>"go", 9=>"ma",
+									10=>"mt", 11=>"ms", 12=>"mg", 13=>"pa", 14=>"pb", 15=>"pr", 16=>"pe", 17=>"pi", 18=>"rj", 19=>"rn", 20=>"rs",
+									21=>"ro", 22=>"rr", 23=>"sc", 24=>"sp", 25=>"se", 26=>"to");
+									
+									for($i=0;$i<27;$i++){
+										if (isset($_GET['uf'])){
+											if($_GET['uf']==$estado[$i]){
+												echo("<option selected value='".$estado[$i]."'>".strtoupper($estado[$i])."</option>");
+											}
+											else{
+												echo("<option value='".$estado[$i]."'>".strtoupper($estado[$i])."</option>");
+											}
+										}
+										else{
+											echo("<option value='".$estado[$i]."'>".strtoupper($estado[$i])."</option>");
+										}
+									}
+								?>
 							</select>
 						</td>
 						<td>
 							<label for="status">Status</label>
 							<select name="status" id="status" style="width:150px;">
 								<option value="all">Todos</option>
-								<option value="0">Aberto</option>
-								<option value="1">Em andamento</option>
+								<option <?php if(isset($_GET['status'])){if($_GET['status']=="0"){echo("selected");}} ?> value="0">Aberto</option>
+								<option <?php if(isset($_GET['status'])){if($_GET['status']=="1"){echo("selected");}} ?> value="1">Em andamento</option>
 							</select>
 						</td>
 						<td>
 							<label for="urgencia">Urgência</label>
 							<select name="urgencia" id="urgencia" style="width:140px;">
 								<option value="all">Todas</option>
-								<option value="0">Muito urgente</option>
-								<option value="1">Urgente</option>
-								<option value="2">Pouco urgente</option>
-								<option value="3">Não urgente</option>
-								<option value="9">Não definida</option>
+								<option <?php if(isset($_GET['urgencia'])){if($_GET['urgencia']=="0"){echo("selected");}} ?> value="0">Muito urgente</option>
+								<option <?php if(isset($_GET['urgencia'])){if($_GET['urgencia']=="1"){echo("selected");}} ?> value="1">Urgente</option>
+								<option <?php if(isset($_GET['urgencia'])){if($_GET['urgencia']=="2"){echo("selected");}} ?> value="2">Pouco urgente</option>
+								<option <?php if(isset($_GET['urgencia'])){if($_GET['urgencia']=="3"){echo("selected");}} ?> value="3">Não urgente</option>
+								<option <?php if(isset($_GET['urgencia'])){if($_GET['urgencia']=="9"){echo("selected");}} ?> value="9">Não definida</option>
 							</select>
 						</td>
 						<td>
 							<label for="filtro">Filtrar necessidades</label>
-							<input type="text" id="filtro" name="filtro" style="width:230px;" maxlength="20" placeholder="Ex : Celular, Bombeiro, Notebook..."/>
+							<input type="text" id="filtro" name="filtro" style="width:230px;" maxlength="20" placeholder="Ex : Celular, Bombeiro, Notebook..." <?php if(isset($_GET['filtro'])){if($_GET['filtro']!=""){echo("value='".$_GET['filtro']."'");}} ?>/>
 						</td>
 						<td>
-							<input type="submit" id="filtrar" name="filtrar" value="Find Gap" style="margin-top:17px;" />
+							<input type="submit" class="btn btn-info" id="filtrar" name="filtrar" value="Find Gap" style="margin-top:15px;" />
 						</td>
 					</tr>
 				</table>
@@ -67,26 +75,27 @@
 			<?php
 				include "./classes/FindGap.php";
 				
-				$_SESSION['findgap'] = new FindGap();
+				$findgap = new FindGap();
 				
-				if (!isset($_POST['categoria'])){
-					$lastprod = $_SESSION['findgap']->showgapprod();
-					$lastserv = $_SESSION['findgap']->showgapserv();
+				if (!isset($_GET['categoria'])){
+					$lastprod = $findgap->showgapprod();
+					$lastserv = $findgap->showgapserv();
 				}
-				else if (isset($_POST['categoria']) && $_POST['categoria']==0){
-					$lastprod = $_SESSION['findgap']->filtraprod($_POST['uf'], $_POST['status'], $_POST['urgencia'], $_POST['filtro']);
-					$lastserv = $_SESSION['findgap']->filtraserv($_POST['uf'], $_POST['status'], $_POST['urgencia'], $_POST['filtro']);
+				else if (isset($_GET['categoria']) && $_GET['categoria']==0){
+					$lastprod = $findgap->filtraprod($_GET['uf'], $_GET['status'], $_GET['urgencia'], $_GET['filtro']);
+					$lastserv = $findgap->filtraserv($_GET['uf'], $_GET['status'], $_GET['urgencia'], $_GET['filtro']);
 				}
-				else if(isset($_POST['categoria']) && $_POST['categoria']==1){
-					$lastprod = $_SESSION['findgap']->filtraprod($_POST['uf'], $_POST['status'], $_POST['urgencia'], $_POST['filtro']);
+				else if(isset($_GET['categoria']) && $_GET['categoria']==1){
+					$lastprod = $findgap->filtraprod($_GET['uf'], $_GET['status'], $_GET['urgencia'], $_GET['filtro']);
 					$lastserv = null;
 				}
-				else if(isset($_POST['categoria']) && $_POST['categoria']==2){
-					$lastserv = $_SESSION['findgap']->filtraserv($_POST['uf'], $_POST['status'], $_POST['urgencia'], $_POST['filtro']);
+				else if(isset($_GET['categoria']) && $_GET['categoria']==2){
+					$lastserv = $findgap->filtraserv($_GET['uf'], $_GET['status'], $_GET['urgencia'], $_GET['filtro']);
 					$lastprod = null;
 				}
-				
-				unset($_SESSION['findgap']);
+				if(isset($_GET['categoria']) && isset($_GET['uf']) && isset($_GET['status']) && isset($_GET['urgencia']) && isset($_GET['filtro'])){
+					$_SESSION['busca'] = array("categoria"=>$_GET['categoria'], "uf"=>$_GET['uf'], "status"=>$_GET['status'], "urgencia"=>$_GET['urgencia'], "filtro"=>$_GET['filtro']);
+				}
 			?>
 			<table class="table table-hover">
 				<tr>
@@ -142,7 +151,7 @@
 					if(!is_null($lastserv)){
 						while($gapserv = mysqli_fetch_array($lastserv)){
 							if($gapserv['urgencia']==0){
-								echo ("<tr class='".$colorcolumns[0]."'");
+								echo ("<tr class='".$colorcolumns[0]."'>");
 							}
 							else if ($gapserv['urgencia']==1){
 								echo ("<tr class='".$colorcolumns[1]."'>");

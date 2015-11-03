@@ -21,6 +21,13 @@ body {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* define qual fonte será usada */
 	font-size: 14px; /* tamanho da fonte do menu superior direito */
 }
+#background{
+	background-image: url("../img/layout/philgap_serv_form.png"); /* insere uma imagem de background na div */
+	background-repeat: no-repeat; /* define a imagem para não repetir */
+	background-position: top; /* posição da imagem na div */
+	height:520px;
+	margin-top:1px;
+}
 .topmenu {
 	margin-top:11px; /* distancia até o topo da página (alinhamento) */
 	display: inline-block; /* posiciona as divs do menu do topo lado a lado */
@@ -63,6 +70,99 @@ body {
 	margin-top:70px;
 	font-size:18px;
 }
-.txtalignleft{
-	text-align:left;
+.fl{
+	display:inline-block;
+	font-size: 24px; /* tamanho da fonte da mensagem de chamada dos botões */
+	line-height: 26px; /* espaçamento vertical entre as linhas dessa div */
+	margin-top:113px;
+}
+#urgencia{
+	margin-left:64px;
+	width:206px;
+}
+#uf{
+	width:182px;
+}
+#cidade{
+	width:331px;
+}
+#bairro{
+	width:190px;
+}
+.sl{
+	display:inline-block;
+	font-size: 24px; /* tamanho da fonte da mensagem de chamada dos botões */
+	line-height: 26px; /* espaçamento vertical entre as linhas dessa div */
+	margin-top:60px;
+	height:114px;
+}
+#status{
+	margin-left:64px;
+	width:206px;
+}
+#cep{
+	width:182px;
+}
+#rua{
+	width:329px;
+}
+#numero{
+	width:70px;
+}
+#comp{
+	width:120px;
+}
+.ll{
+	font-size: 24px; /* tamanho da fonte da mensagem de chamada dos botões */
+	line-height: 26px; /* espaçamento vertical entre as linhas dessa div */
+	margin-left:63px;
+	width:878px;
+	height:170px;
+	/* usar apenas para definir uma cor de fundo ==>>  */
+	/*background:#ccc;*/
+}
+
+.dil{
+	display:inline-block;
+}
+#gef{
+	position:relative;
+	width:213px;
+	height:170px;
+}
+#desc{
+	position:absolute;
+	width:665px;
+	height:170px;
+}
+#gap{
+	margin-left:7px;
+}
+#foco{
+	margin-left:7px;
+	margin-top:47px;
+}
+#nome{
+	margin-left:7px;
+	margin-top:45px;
+}
+.topnav{
+	display: inline-block; /* mostra as divs dos botões alinhadas lado a lado */
+	height:66px;
+	width:930px;
+}
+.left{
+	float:left;
+}
+.right{
+	float:right;
+}
+.philgap{
+	width:1000px;
+	height:320px;
+}
+hr {
+	color: #000;
+    background-color: #000;
+    height: 1px;
 }
