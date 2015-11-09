@@ -7,7 +7,7 @@
 		<div id="sobre" class="topmenu"><strong><a href="./sobre.php">SOBRE</a></strong></div>
 		<div id="cadastro" class="topmenu"><strong><a href="./cadastro.php">CADASTRO</a></strong></div>
 		<?php
-			include "./classes/ConexaoBD.php";
+			require_once "./classes/ConexaoBD.php";
 			
 			if (isset($_SESSION['page'])){
 				$page = $_SESSION['page'];
@@ -35,7 +35,7 @@
 			}
 			if((isset($_SESSION['nome'])) && (isset($_SESSION['id']))){
 				echo ("<div id='id_usuario' class='topmenu'><strong>
-				<a href='./pages/usuarios/".$_SESSION['id']."-".strtolower($_SESSION['nome']).".php'>".strtoupper($_SESSION['nome'])."</a>
+				<a href='./chooseoffer.php'>".strtoupper($_SESSION['nome'])."</a>
 				</strong><br/><center><a href='./pages/logoff.php'>(sair)</a></center></div>");
 			}
 			else{

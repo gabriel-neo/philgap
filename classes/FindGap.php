@@ -36,7 +36,7 @@
 			if($filtro != ""){
 				$sql .= " and (tbgp.produto like '%".$filtro."%' or tbgp.especificacao like '%".$filtro."%')";
 			}
-			$sql .= " order by urgencia, status";
+			$sql .= " order by urgencia, status limit 20";
 			
 			return mysqli_query($con, $sql);
 		}
@@ -59,7 +59,7 @@
 			if($filtro != ""){
 				$sql .= " and (tbgs.especialidade like '%".$filtro."%' or tbgs.foco like '%".$filtro."%')";
 			}
-			$sql .= " order by urgencia, status";
+			$sql .= " order by urgencia, status limit 20";
 			
 			return mysqli_query($con, $sql);
 		}

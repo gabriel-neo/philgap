@@ -132,7 +132,7 @@
 							<!-- Foco Principal -->
 							<div>
 								<label for="foco"><strong>Onde será aplicado o Serviço?</strong></label>
-								<input type="text" id="foco" name="foco" style="width: 250px;" maxlength="20" placeholder="Ex : Parede, Porta, Computador, Carro..." required />
+								<input type="text" id="foco" name="foco" style="width: 290px;" maxlength="20" placeholder="Ex : Parede, Porta, Computador, Carro..." required />
 							</div>
 							<br/>
 							<br/>

@@ -1,5 +1,5 @@
 ﻿<?php
-	include "../../classes/Cliente.php";
+	require_once "../../classes/Cliente.php";
 	
 	session_start();
 	

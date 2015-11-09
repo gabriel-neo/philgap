@@ -1,5 +1,5 @@
 ﻿<?php
-	include "../../classes/GapProduto.php";
+	require_once "../../classes/GapProduto.php";
 	
 	session_start();
 	

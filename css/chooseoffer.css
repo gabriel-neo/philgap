@@ -1,4 +1,5 @@
-﻿/*------- Css Default -------*/
+﻿
+/*------- Css Default -------*/
 
 body {
 	/* usar apenas para definir uma cor de fundo ==>> background:#ccc; */
@@ -46,10 +47,7 @@ body {
 	text-align:left; /* "remédio" para o hack do IE */
 }
 .index{
-	color:#ffffff; /* define a cor do texto dentro da index */
-}
-#index{
-	display: inline-block; /* mostra as divs dos botões alinhadas lado a lado */
+	color:#000000; /* (preta) define a cor do texto dentro da index */
 }
 #fonte {
 	font-size: 16px; /* tamanho da fonte da mensagem de chamada dos botões */
@@ -59,32 +57,8 @@ body {
 	text-align:center; /* hack para o IE */
 	margin: 0 auto;
 }
-#text{
-	margin-top:70px;
-	font-size:18px;
-}
 .generaljoin{
-	margin-top:60px;
 	width:1000px;
 	margin:0 auto;
-}
-#background{
-	background:#C0C0C0;
-}
-.corfonte{
-	color:#000000;
-	font-size:24px;
-}
-.position{
-	text-align:left;
-}
-#fixed{
-	width:700px;
-	margin:0 auto;
-}
-.index2{
-	display: inline-block; /* mostra as divs dos botões alinhadas lado a lado */
-}
-.sexo{
-	width:265px;
+	margin-top:30px;
 }

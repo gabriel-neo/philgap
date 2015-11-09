@@ -1,5 +1,5 @@
 ﻿<?php
-	include "../../classes/GapServico.php";
+	require_once "../../classes/GapServico.php";
 	
 	session_start();
 	

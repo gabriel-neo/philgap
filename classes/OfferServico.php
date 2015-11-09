@@ -1,14 +1,14 @@
 ﻿<?php
 	class OfferServico{
 		// Atributos
-		private $id_gapserv = null;
-		private $nome = null;
-		private $especialidade = null;
-		private $especializado = null;
-		private $prazoinicio = null;
-		private $duracao = null;
-		private $domicilio = null;
-		private $valor = null;
+		private $id_gapserv;
+		private $nome;
+		private $especialidade;
+		private $especializado;
+		private $prazoinicio;
+		private $duracao;
+		private $domicilio;
+		private $valor;
 		
 		// Construtores
 		

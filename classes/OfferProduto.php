@@ -1,19 +1,19 @@
 ﻿<?php
 	class OfferProduto{
+		
 		// Atributos
-		private $id_gapprod = null;
-		private $nome = null;
-		private $produto = null;
-		private $especificacao = null;
-		private $marca = null;
-		private $cor = null;
-		private $valor = null;
-		private $formaenvio = null;
-		private $custoenvio = null;
-		private $link = null;
+		private $id_gapprod;
+		private $nome;
+		private $produto;
+		private $especificaca;
+		private $marca;
+		private $cor;
+		private $valor;
+		private $formaenvio;
+		private $custoenvio;
+		private $link;
 		
 		// Construtores
-		
 		public function OfferProduto($id_gapprod, $nome, $produto, $especificacao, $marca, $cor, $valor, $formaenvio, $custoenvio, $link){
 			$this->id_gapprod = $id_gapprod;
 			$this->nome = $nome;

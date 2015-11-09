@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-br">
 	<head>
 		<title>Philgap - Leve o mundo no bolso!</title>
@@ -10,8 +10,8 @@
 		
 		<!--  Styles & Scripts  -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- PhilGapProd Css -->
-		<link href="./css/philgapprod.css" rel="stylesheet" type="text/css"/>
+		<!-- ChooseOffer Css -->
+		<link href="./css/chooseoffer.css" rel="stylesheet" type="text/css"/>
 		<!-- Login Css -->
 		<link href="./css/login.css" rel="stylesheet" type="text/css"/>
 		<!-- Bootstrap -->
@@ -33,10 +33,10 @@
 					header("location:index.php");
 				}
 			}
-			$_SESSION['page'] = "philgapprod";
+			$_SESSION['page'] = "chooseoffer";
 			
 			include('./pages/head.php');
-			include('./pages/philgap/body_prod.php');
+			include('./pages/chooseoffer/body.php');
 			include('./pages/footer.php');
 		?>
 	</body>

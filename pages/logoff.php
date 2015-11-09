@@ -7,7 +7,7 @@
 	
 	//verifica se o usuário estava em alguma página antes de chamar a logoff.
 	if(isset($_SESSION['page'])){
-		if ($_SESSION['page'] == "addgap" || $_SESSION['page'] == "philgap"){
+		if ($_SESSION['page'] == "addgap" || $_SESSION['page'] == "philgap" || $_SESSION['page'] == "findgap" || $_SESSION['page'] == "philgapprod" || $_SESSION['page'] == "philgapserv" || $_SESSION['page'] == "chooseoffer"){
 			$page = "index";
 		}
 		else{
