@@ -12,7 +12,7 @@
 			$especialidade = $_POST['oespecialidade'];
 			$especializado = $_POST['oespecializacao'];
 			$prazoinicio = $_POST['oprazoinicio'];
-			$duracao = $_POST['oduracao'];
+			$duracao = $_POST['oduracao']." ".$_POST['oduracao2'];
 			$domicilio = $_POST['odomicilio'];
 			$valor = $_POST['oorcamentovalor'];
 			

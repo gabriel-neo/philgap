@@ -83,11 +83,22 @@
 					<div></div>
 					<div style="display: inline-block; width:300px;">
 						<label for="oprazoinicio"><strong>Prazo estimado para início do Serviço</strong></label>
-						<input type="text" style="width:250px;" id="oprazoinicio" name="oprazoinicio" size="30" maxlength="20" placeholder="Ex: Daqui 2 dias, Em até 1 semana..." required/>
+						(Em dias)
+						<br/>
+						<input type="number" style="width:200px;" id="oprazoinicio" name="oprazoinicio" min="1" max="365" placeholder="Ex: 1, 5, 30..." required/>
 					</div>
 					<div style="display: inline-block;  float:right">
 						<label for="oduracao"><strong>Duração do Serviço</strong></label>
-						<input type="text" style="width:230px;" id="oduracao" name="oduracao" size="30" maxlength="20" placeholder="Meia hora, Três horas, Três dias..." required/>
+						<input type="number" style="width:100px;" id="oduracao" name="oduracao" min="1" max="365" placeholder="Ex: 1, 5, 10..." required/>
+						<select id="oduracao2" name="oduracao2" style="width:120px;" required>
+							<option value="">Selecione</option>
+							<option value="Minutos">Minuto(s)</option>
+							<option value="Horas">Hora(s)</option>
+							<option value="Dias">Dia(s)</option>
+							<option value="Semanas">Semana(s)</option>
+							<option value="Mêses">Mês(es)</option>
+							<option value="Anos">Ano(s)</option>
+						</select>
 					</div>
 					<div></div>
 					<div style="display: inline-block;">
@@ -100,7 +111,7 @@
 					</div>
 					<div style="display: inline-block; float:right;">
 						<label for="oorcamentovalor"><strong>Valor do orçamento</strong></label>
-						<input type="number" style="width:160px;" id="oorcamentovalor" name="oorcamentovalor" size="30" maxlength="9" placeholder="Ex: R$ 250,00" required/>
+						<input type="text" style="width:160px;" id="oorcamentovalor" name="oorcamentovalor" size="30" maxlength="9" placeholder="Ex: R$ 250,00" required/>
 					</div>
 					<div></div>
 					<div>

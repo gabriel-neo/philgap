@@ -3,18 +3,18 @@
 		<div id="lefttop" class="left index">
 			<h2>Sobre Philgap</h2>
 			<br/>
-			<p>Visando desenvolver um produto que contribua para o <br/>
-			crescimento do seu poder aquisitivo, disponibilizamos o <br/>
-			mais novo sistema para realização de transações no meio <br/>
+			<p>Visando desenvolver um produto que contribuísse para o<br/>
+			crescimento do seu poder aquisitivo, disponibilizamos o<br/>
+			mais novo sistema para realização de transações no meio<br/>
 			virtual.</p>
 		</div>
 		<div id="right" class="index">
 			<img src="./img/layout/mini_index.png" width="350px"/>
 		</div> 
 		<div class="left">
-			<p>Philgap surgiu da ideia de querer criar uma plataforma onde fosse possível atender <br/>
+			<p>Philgap surgiu da ideia de criar uma plataforma onde fosse possível atender<br/>
 			às necessidades humanas de forma ágil, inovadora e realmente efetiva.<br/>
-			Inicialmente atuando na área de produtos e serviços, nosso sitema dispõe de uma completa <br/>
+			Inicialmente atuando na área de produtos e serviços, nosso sitema dispõe de uma completa<br/>
 			ferramenta para identificar problemas e propor soluções.<br/>
 			Para testar, basta realizar seu cadastro e então escolher se deseja iniciar um processo de
 			compra ou de venda.</p>

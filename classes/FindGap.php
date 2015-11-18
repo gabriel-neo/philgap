@@ -5,7 +5,7 @@
 		public function showgapprod(){
 			$con = ConexaoBD::con();
 			
-			$sql = "select tbgp.id, tbgp.uf, tbgp.status, tbgp.urgencia, tbgp.produto as 'gap', tbgp.especificacao as 'desc', tbic.nome from tb_gap_produto tbgp inner join tb_info_usuarios tbic on tbgp.id_user = tbic.id order by urgencia, status";
+			$sql = "select tbgp.id, tbgp.uf, tbgp.status, tbgp.urgencia, tbgp.produto as 'gap', tbgp.especificacao as 'desc', tbic.nome from tb_gap_produto tbgp inner join tb_info_usuarios tbic on tbgp.id_user = tbic.id where tbgp.status = 0 or tbgp.status = 1 order by urgencia, status";
 			
 			return mysqli_query($con, $sql);
 		}
@@ -13,7 +13,7 @@
 		public function showgapserv(){
 			$con = ConexaoBD::con();
 			
-			$sql = "select tbgs.id, tbgs.uf, tbgs.status, tbgs.urgencia, tbgs.especialidade as 'gap', tbgs.foco as 'desc', tbic.nome from tb_gap_servico tbgs inner join tb_info_usuarios tbic on tbgs.id_user = tbic.id order by urgencia, status";
+			$sql = "select tbgs.id, tbgs.uf, tbgs.status, tbgs.urgencia, tbgs.especialidade as 'gap', tbgs.foco as 'desc', tbic.nome from tb_gap_servico tbgs inner join tb_info_usuarios tbic on tbgs.id_user = tbic.id where tbgs.status = 0 or tbgs.status = 1 order by urgencia, status";
 			
 			return mysqli_query($con, $sql);
 		}
@@ -22,7 +22,7 @@
 			
 			$con = ConexaoBD::con();
 			
-			$sql = "select tbgp.id, tbgp.uf, tbgp.status, tbgp.urgencia, tbgp.produto as 'gap', tbgp.especificacao as 'desc', tbic.nome from tb_gap_produto tbgp inner join tb_info_usuarios tbic on tbgp.id_user = tbic.id where 1=1";
+			$sql = "select tbgp.id, tbgp.uf, tbgp.status, tbgp.urgencia, tbgp.produto as 'gap', tbgp.especificacao as 'desc', tbic.nome from tb_gap_produto tbgp inner join tb_info_usuarios tbic on tbgp.id_user = tbic.id where (tbgp.status = 0 or tbgp.status = 1)";
 			
 			if ($uf != "all"){
 				$sql .= " and uf = '".$uf."'";
@@ -45,7 +45,7 @@
 			
 			$con = ConexaoBD::con();
 			
-			$sql = "select tbgs.id, tbgs.uf, tbgs.status, tbgs.urgencia, tbgs.especialidade as 'gap', tbgs.foco as 'desc', tbic.nome from tb_gap_servico tbgs inner join tb_info_usuarios tbic on tbgs.id_user = tbic.id where 1=1";
+			$sql = "select tbgs.id, tbgs.uf, tbgs.status, tbgs.urgencia, tbgs.especialidade as 'gap', tbgs.foco as 'desc', tbic.nome from tb_gap_servico tbgs inner join tb_info_usuarios tbic on tbgs.id_user = tbic.id where (tbgs.status = 0 or tbgs.status = 1)";
 			
 			if ($uf != "all"){
 				$sql .= " and uf = '".$uf."'";

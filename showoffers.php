@@ -10,10 +10,8 @@
 		
 		<!--  Styles & Scripts  -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- Sobre Css -->
-		<link href="./css/sobre.css" rel="stylesheet" type="text/css"/>
-		<!-- Login Css -->
-		<link href="./css/login.css" rel="stylesheet" type="text/css"/>
+		<!-- ShowOffers Css -->
+		<link href="./css/showoffers.css" rel="stylesheet" type="text/css"/>
 		<!-- Bootstrap -->
 		<link href="./css/bootstrap.css" rel="stylesheet" media="screen"/>
 		<!-- Rodapé -->
@@ -26,10 +24,19 @@
 	<body>
 		<?php
 			session_start();
-			$_SESSION['page'] = "sobre";
+			
+			if (!isset($_SESSION['id']) && !isset($_SESSION['nome'])){
+				if (isset($_SESSION['page'])){
+					header("location:".$_SESSION['page'].".php");
+				}
+				else{
+					header("location:index.php");
+				}
+			}
+			$_SESSION['page'] = "showoffers";
 			
 			include('./pages/head.php');
-			include('./pages/sobre/body.php');
+			include('./pages/showoffers/body.php');
 			include('./pages/footer.php');
 		?>
 	</body>

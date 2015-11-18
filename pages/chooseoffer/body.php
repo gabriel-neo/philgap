@@ -1,7 +1,7 @@
 ﻿<?php
-	require_once ("./classes/ShowGapUserController.php");
-	$controller = new ShowGapUserController();
-	$controller->GetGap();
+	require_once ("./classes/GapUserController.php");
+	$controller = new GapUserController();
+	$gaps = $controller->GetGap();
 ?>
 <section class="body">
 	<section id="text" class="form">
@@ -9,9 +9,6 @@
 			<h1>Gap's Cadastrados</h1>
 		</div>
 		<div class="txtalignleft">
-			<?php
-				$gaps = $_SESSION['gaps'];
-			?>
 			<form action="./chooseoffer.php" class="seleciona_produtos" method="get">
 				<legend>Use os campos abaixo para filtrar</legend>
 				<table>
@@ -60,12 +57,12 @@
 					<th>Urgência</th>
 					<th>Gap</th>
 					<th>Descrição</th>
-					<th>Ofertas</th>
+					<th><center>Ofertas</center></th>
 					<th><center>Visualizar Ofertas</center></th>
 				</tr>
 				<?php
 					$urgencia = array(0=>"Muito Urgente",1=>"Urgente",2=>"Pouco Urgente", 3=>"Não Urgente",9=>"Não Definido");
-					$status = array(0=>"Aberto", 1=>"Em Andamento");
+					$status = array(0=>"Aberto", 1=>"Em Andamento", 2=>"Fechado");
 					$colorcolumns = array(0=>"error",1=>"warning",2=>"warning",3=>"info",4=>"info");
 					if(!is_null($gaps[0])){
 						while($gapprod = mysqli_fetch_assoc($gaps[0])){
@@ -113,8 +110,8 @@
 										<td>".$urgencia[$gapprod['urgencia']]."</td>
 										<td>".$gapprod['gap']."</td>
 										<td>".$gapprod['desc']."</td>
-										<td><center>". 0 ."</center></td>
-										<td><a style='color:#000000;' href='./philgapprod.php?idgap=".$gapprod['id']."'><center><strong>Abrir</strong></center></a></td>
+										<td><center>". $gapprod['qtd'] ."</center></td>
+										<td><a style='color:#000000;' href='./showoffers.php?idgap=".$gapprod['id']."&gap=1'><center><strong>Abrir</strong></center></a></td>
 								   </tr>");
 						}
 					}
@@ -164,8 +161,8 @@
 										<td>".$urgencia[$gapserv['urgencia']]."</td>
 										<td>".$gapserv['gap']."</td>
 										<td>".$gapserv['desc']."</td>
-										<td><center>". 0 ."</center></td>
-										<td><a style='color:#000000;' href='./philgapserv.php?idgap=".$gapserv['id']."'><center><strong>Abrir</strong></center></a></td>
+										<td><center>". $gapserv['qtd'] ."</center></td>
+										<td><a style='color:#000000;' href='./showoffers.php?idgap=".$gapserv['id']."&gap=2'><center><strong>Abrir</strong></center></a></td>
 								   </tr>");
 						}
 					}

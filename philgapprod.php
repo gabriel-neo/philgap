@@ -16,6 +16,8 @@
 		<link href="./css/login.css" rel="stylesheet" type="text/css"/>
 		<!-- Bootstrap -->
 		<link href="./css/bootstrap.css" rel="stylesheet" media="screen"/>
+		<!-- Rodapé -->
+		<link href="./css/rodape.css" rel="stylesheet" media="screen"/>
 		<!-- Java Script & jQuery -->
 		<script src="./js/jquery.min.js"></script>
 		<script src="./js/login.js"></script>

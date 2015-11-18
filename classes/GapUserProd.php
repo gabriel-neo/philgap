@@ -1,14 +1,16 @@
 ﻿<?php
-	class ShowGapUserServ{
+	class GapUserProd{
 		
 		// Atributos
 		private $id;
 		private $id_user;
 		private $status;
 		private $urgencia;
-		private $especialidade;
-		private $foco;
-		private $descricao;
+		private $produto;
+		private $especificacao;
+		private $marca;
+		private $cor;
+		private $precomedio;
 		private $cep;
 		private $logradouro;
 		private $numero;
@@ -30,14 +32,20 @@
 		public function getUrgencia(){
 			return $this->urgencia;
 		}
-		public function getEspecialidade(){
-			return $this->especialidade;
+		public function getProduto(){
+			return $this->produto;
 		}
-		public function getFoco(){
-			return $this->foco;
+		public function getEspecificacao(){
+			return $this->especificacao;
 		}
-		public function getDescricao(){
-			return $this->descricao;
+		public function getMarca(){
+			return $this->marca;
+		}
+		public function getCor(){
+			return $this->cor;
+		}
+		public function getPrecomedio(){
+			return $this->precomedio;
 		}
 		public function getCep(){
 			return $this->cep;
@@ -74,14 +82,20 @@
 		public function setUrgencia($urgencia){
 			$this->urgencia = $urgencia;
 		}
-		public function setEspecialidade($especialidade){
-			$this->especialidade = $especialidade;
+		public function setProduto($produto){
+			$this->produto = $produto;
 		}
-		public function setFoco($foco){
-			$this->foco = $foco;
+		public function setEspecificacao($especificacao){
+			$this->especificacao = $especificacao;
 		}
-		public function setDescricao($descricao){
-			$this->descricao = $descricao;
+		public function setMarca($marca){
+			$this->marca = $marca;
+		}
+		public function setCor($cor){
+			$this->cor = $cor;
+		}
+		public function setPrecomedio($precomedio){
+			$this->precomedio = $precomedio;
 		}
 		public function setCep($cep){
 			$this->cep = $cep;

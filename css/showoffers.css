@@ -1,4 +1,5 @@
-﻿/*------- Css Default -------*/
+﻿
+/*------- Css Default -------*/
 
 body {
 	/* usar apenas para definir uma cor de fundo ==>> background:#ccc; */
@@ -44,13 +45,9 @@ body {
 	width: 1000px; /* define a largura da página (centralizada com 1000px) */
 	margin:0 auto; /* posiciona o conteudo da section body ao centro dela */
 	text-align:left; /* "remédio" para o hack do IE */
-	height:551px;
 }
 .index{
-	color:#ffffff; /* define a cor do texto dentro da index */
-}
-#index{
-	display: inline-block; /* mostra as divs dos botões alinhadas lado a lado */
+	color:#000000; /* (preta) define a cor do texto dentro da index */
 }
 #fonte {
 	font-size: 16px; /* tamanho da fonte da mensagem de chamada dos botões */
@@ -60,18 +57,8 @@ body {
 	text-align:center; /* hack para o IE */
 	margin: 0 auto;
 }
-#text{
-	margin-top:90px;
-	font-size:18px;
-}
-.left{
-	float:left;
-	width:330px;
-}
-.center{
-	width:330px;
-}
-.right{
-	float:right;
-	width:330px;
+.generaljoin{
+	width:1000px;
+	margin:0 auto;
+	margin-top:30px;
 }
