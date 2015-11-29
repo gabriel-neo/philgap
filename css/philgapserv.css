@@ -51,6 +51,7 @@ body {
 	width: 1000px; /* define a largura da página (centralizada com 1000px) */
 	margin:0 auto; /* posiciona o conteudo da section body ao centro dela */
 	text-align:left; /* "remédio" para o hack do IE */
+	margin-bottom:15px;
 }
 .index{
 	color:#ffffff; /* define a cor do texto dentro da index */
